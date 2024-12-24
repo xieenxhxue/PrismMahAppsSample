@@ -15,9 +15,11 @@ namespace PrismMahAppsSample.Infrastructure.Services
         /// <param name="culture"></param>
         public LocalizerService(string culture)
         {
-            this.SupportedLanguages = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(c => c.IetfLanguageTag.Equals("de-DE") || 
-                                                                                                   c.IetfLanguageTag.Equals("en-US"))
-                                                                                       .ToList<CultureInfo>();
+            this.SupportedLanguages = CultureInfo.GetCultures(CultureTypes.AllCultures)
+                .Where(c => c.IetfLanguageTag.Equals("zh-CN") ||
+                c.IetfLanguageTag.Equals("de-DE") || 
+                c.IetfLanguageTag.Equals("en-US"))
+                .ToList<CultureInfo>();
             this.SetLocale(culture);
         }
 

@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PrismMahAppsSample.ModuleA.Views"
-             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:lex="https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" 
+             xmlns:local="clr-namespace:PrismMahAppsSample.ModuleA.Views"
                    lex:LocalizeDictionary.DesignCulture="de-DE"        
                    lex:ResxLocalizationProvider.DefaultAssembly="PrismMahAppsSample.ModuleA"
                    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
@@ -27,7 +27,7 @@
         <!-- Tiles -->
         <StackPanel Grid.Row="1" 
                     Orientation="Horizontal">
-            <metro:Tile Title="{lex:Loc Tile1ShowPopupTitle}" 
+            <mah:Tile Title="{lex:Loc Tile1ShowPopupTitle}" 
                         Content="{lex:Loc Tile1ShowPopupDescription}"
                         Command="{Binding ShowModuleAPopupCommand}"
                         HorizontalAlignment="Left"
@@ -35,7 +35,7 @@
                         TiltFactor="1"                    
                         Width="255" 
                         Height="100" />
-            <metro:Tile Title="{lex:Loc Tile2ShowPopupTitle}" 
+            <mah:Tile Title="{lex:Loc Tile2ShowPopupTitle}" 
                         Content="{lex:Loc Tile2ShowPopupDescription}"
                         Command="{Binding ShowModuleAMessageCommand}"
                         HorizontalAlignment="Left"

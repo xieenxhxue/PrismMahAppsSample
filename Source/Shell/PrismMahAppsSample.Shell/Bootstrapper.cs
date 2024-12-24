@@ -64,7 +64,7 @@ namespace PrismMahAppsSample.Shell
             // Localizer-Service
             Container.RegisterInstance(typeof(ILocalizerService),
                 ServiceNames.LocalizerService,
-                new LocalizerService("de-DE"),
+                new LocalizerService("zh-CN"),//"en-US"
                 new Microsoft.Practices.Unity.ContainerControlledLifetimeManager());
         }
 

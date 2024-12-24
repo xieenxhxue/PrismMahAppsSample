@@ -1,16 +1,16 @@
-﻿<metro:MetroWindow x:Class="PrismMahAppsSample.Shell.Views.MainWindow"
+﻿<mah:MetroWindow x:Class="PrismMahAppsSample.Shell.Views.MainWindow"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:prism="http://prismlibrary.com/"
+                   xmlns:lex="https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension"
                    xmlns:local="clr-namespace:PrismMahAppsSample"
                    xmlns:infConstants="clr-namespace:PrismMahAppsSample.Infrastructure.Constants;assembly=PrismMahAppsSample.Infrastructure"
                    xmlns:infBehaviors="clr-namespace:PrismMahAppsSample.Infrastructure.Behaviors;assembly=PrismMahAppsSample.Infrastructure"
                    infBehaviors:RegionPopupBehaviors.CreatePopupRegionWithName="{x:Static infConstants:RegionNames.DialogPopupRegion}"
                    infBehaviors:RegionPopupBehaviors.ContainerWindowStyle="{StaticResource PopupRegionWindowStyle}"
-                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-                   xmlns:prism="http://www.codeplex.com/prism"
-                   xmlns:lex="http://wpflocalizeextension.codeplex.com"
                    lex:LocalizeDictionary.DesignCulture="de-DE"        
                    lex:ResxLocalizationProvider.DefaultAssembly="PrismMahAppsSample.Shell"
                    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
@@ -21,21 +21,21 @@
                    Title="MainWindow" Height="600" Width="800">
 
     <!-- LeftWindow Commands -->
-    <metro:MetroWindow.LeftWindowCommands>
-        <metro:WindowCommands x:Name="leftWindowCommandsRegion" />
-    </metro:MetroWindow.LeftWindowCommands>
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands x:Name="leftWindowCommandsRegion" />
+    </mah:MetroWindow.LeftWindowCommands>
 
     <!-- RightWindow Commands -->
-    <metro:MetroWindow.RightWindowCommands>
-        <metro:WindowCommands x:Name="rightWindowCommandsRegion" />
-    </metro:MetroWindow.RightWindowCommands>
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands x:Name="rightWindowCommandsRegion" />
+    </mah:MetroWindow.RightWindowCommands>
 
     <!-- Flyouts -->
-    <metro:MetroWindow.Flyouts>
-        <metro:FlyoutsControl x:Name="flyoutsControlRegion" />
-    </metro:MetroWindow.Flyouts>
+    <mah:MetroWindow.Flyouts>
+        <mah:FlyoutsControl x:Name="flyoutsControlRegion" />
+    </mah:MetroWindow.Flyouts>
 
-    <metro:MetroContentControl>
+    <mah:MetroContentControl>
 
         <Grid>
 
@@ -84,6 +84,6 @@
 
         </Grid>
 
-    </metro:MetroContentControl>  
+    </mah:MetroContentControl>
 
-</metro:MetroWindow>
+</mah:MetroWindow>
