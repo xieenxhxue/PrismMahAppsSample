@@ -1,5 +1,5 @@
 ﻿using MahApps.Metro.Controls;
-using Microsoft.Practices.Unity;
+using Unity;
 using PrismMahAppsSample.Infrastructure.Constants;
 using PrismMahAppsSample.Infrastructure.Interfaces;
 using System;
@@ -42,7 +42,6 @@ namespace PrismMahAppsSample.Infrastructure.Services
         public async Task<MessageDialogResult> ShowMessageAsnyc(string title, string message, MessageDialogStyle style = MessageDialogStyle.Affirmative, MetroDialogSettings settings = null)
         {
             this.MainWindow.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
-
             return await this.MainWindow.ShowMessageAsync(title, message, style, this.MainWindow.MetroDialogOptions);
         }
 

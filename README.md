@@ -12,7 +12,7 @@ forked from [steve600/PrismMahAppsSample] (https://github.com/steve600/PrismMahA
 
 ## Update
 Update Ϊ.NET Framework 4.8
-
+### branch prism6
 Update NuGet-Packages
 - Prism 6.3.0
 - Unity 4.0.1
@@ -32,4 +32,128 @@ to
 ```
 xmlns:prism="http://prismlibrary.com/"
 xmlns:lex="https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension"
+```
+
+### branch prism7
+Add NuGet-Packages
+- System.ValueTuple 4.5.0
+- System.Threading.Tasks.Extensions 4.5.2
+- System.Runtime.CompilerServices.Unsafe 4.5.2
+- Unity.Abstractions 5.11.1
+- Unity.Container 5.11.1
+
+Update NuGet-Packages
+- Prism.Core 7.2.0.1422
+- Prism.Wpf  7.2.0.1422
+- CommonServiceLocator 2.0.4
+- Unity 5.11.1
+
+namespace changed
+```
+Microsoft.Practices.ServiceLocation
+Microsoft.Practices.Unity
+```
+to
+```
+CommonServiceLocator
+Unity
+```
+
+Prism.Modularity.IModule interface changed 
+```
+Initialize
+```
+to Implemented
+``` 
+RegisterTypes(IContainerRegistry containerRegistry)；
+OnInitialized(IContainerProvider containerProvider)；
+```
+
+remove 
+``` 
+Bootstrapper.cs
+```
+
+``` App.cs
+    public partial class App
+    {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+           base.OnStartup(e);
+           Bootstrapper bootstrapper = new Bootstrapper();
+           bootstrapper.Run();
+       }
+    }
+```
+to 
+``` App.cs implemented PrismApplication
+
+    public partial class App:PrismApplication
+    {
+        protected override Window CreateShell()
+        {
+           return base.Container.Resolve<MainWindow>();
+        }
+    }
+```
+
+
+``` App.xaml
+<Application x:Class="PrismMahAppsSample.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PrismMahAppsSample">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- Custom-Styles -->
+                <ResourceDictionary Source="/PrismMahAppsSample.Styling;component/LookAndFeel.xaml"/>
+
+                <!-- MahApps-Styles -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+                <!-- ModernUI-Icons -->
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+```
+
+
+``` App.xaml
+< Application x:Class="PrismMahAppsSample.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:local="clr-namespace:PrismMahAppsSample">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- Custom-Styles -->
+                <ResourceDictionary Source="/PrismMahAppsSample.Styling;component/LookAndFeel.xaml"/>
+
+                <!-- MahApps-Styles -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+                <!-- ModernUI-Icons -->
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
 ```

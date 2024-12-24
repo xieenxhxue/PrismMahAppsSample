@@ -1,8 +1,9 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Unity;
 using Prism.Regions;
 using PrismMahAppsSample.Infrastructure.Base;
 using PrismMahAppsSample.Infrastructure.Constants;
 using PrismMahAppsSample.ModuleA.Views;
+using Prism.Unity;
 
 namespace PrismMahAppsSample.ModuleA
 {
@@ -27,7 +28,8 @@ namespace PrismMahAppsSample.ModuleA
             regionManager.RegisterViewWithRegion(RegionNames.MainRegion, typeof(HomeTiles));
 
             // Register Views
-            Prism.Unity.UnityExtensions.RegisterTypeForNavigation<Views.ModuleAPopup>(unityContainer, PopupNames.ModuleAPopup);
+            regionManager.RegisterViewWithRegion(PopupNames.ModuleAPopup, typeof(ModuleAPopup));
+            //Prism.Unity.UnityExtensions.RegisterTypeForNavigation<Views.ModuleAPopup>(unityContainer, PopupNames.ModuleAPopup);
         }
     }
 }

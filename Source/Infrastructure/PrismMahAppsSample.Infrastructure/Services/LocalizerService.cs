@@ -13,8 +13,9 @@ namespace PrismMahAppsSample.Infrastructure.Services
         /// Ctor
         /// </summary>
         /// <param name="culture"></param>
-        public LocalizerService(string culture)
+        public LocalizerService()
         {
+            string culture = "zh-CN";
             this.SupportedLanguages = CultureInfo.GetCultures(CultureTypes.AllCultures)
                 .Where(c => c.IetfLanguageTag.Equals("zh-CN") ||
                 c.IetfLanguageTag.Equals("de-DE") || 

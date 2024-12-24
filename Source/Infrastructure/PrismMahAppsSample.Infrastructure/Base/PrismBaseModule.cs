@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Unity;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
@@ -30,6 +31,16 @@ namespace PrismMahAppsSample.Infrastructure.Base
         public virtual void Initialize()
         {
 
+        }
+
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            
+        }
+
+        public void OnInitialized(IContainerProvider containerProvider)
+        {
+            Initialize();
         }
 
         #endregion Interface IModule

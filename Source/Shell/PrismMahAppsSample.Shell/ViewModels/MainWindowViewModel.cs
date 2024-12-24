@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Unity;
 using Prism.Events;
 using Prism.Logging;
 using Prism.Regions;
@@ -6,6 +6,7 @@ using PrismMahAppsSample.Infrastructure.Base;
 using PrismMahAppsSample.Infrastructure.Constants;
 using PrismMahAppsSample.Infrastructure.Events;
 using PrismMahAppsSample.Infrastructure.Interfaces;
+using PrismMahAppsSample.Shell.Views;
 
 namespace PrismMahAppsSample.Shell.ViewModels
 {
@@ -20,6 +21,14 @@ namespace PrismMahAppsSample.Shell.ViewModels
             EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Subscribe(OnStatusBarMessageUpdateEvent);
 
             Container.Resolve<ILoggerFacade>().Log("MainViewModel created", Category.Info, Priority.None);
+
+            // Add right windows commands
+            RegionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(RightTitlebarCommands));
+            // Add flyouts
+            RegionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(ShellSettingsFlyout));
+            // Add tiles to MainRegion
+            RegionManager.RegisterViewWithRegion(RegionNames.MainRegion, typeof(HomeTiles));
+
         }
 
         #region Event-Handler
@@ -47,7 +56,7 @@ namespace PrismMahAppsSample.Shell.ViewModels
             get { return statusBarMessage; }
             set { this.SetProperty<string>(ref this.statusBarMessage, value); }
         }
-        
+
         #endregion Properties
     }
 }

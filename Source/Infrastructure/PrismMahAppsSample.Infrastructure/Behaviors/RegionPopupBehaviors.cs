@@ -16,7 +16,7 @@
 //===================================================================================
 using System.ComponentModel;
 using System.Windows;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using System;
 using Prism.Regions;
 
@@ -123,7 +123,9 @@ namespace PrismMahAppsSample.Infrastructure.Behaviors
             // instance of it that will be in charge of registering the Region once a RegionManager is
             // set as an attached property in the Visual Tree.
             IRegionManager regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
-            if (regionManager != null)
+
+            //fix bug
+            if (regionManager != null && !regionManager.Regions.ContainsRegionWithName(regionName))
             {
                 IRegion region = new SingleActiveRegion();
                 DialogActivationBehavior behavior;

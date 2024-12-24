@@ -1,5 +1,5 @@
 ﻿using MahApps.Metro;
-using Microsoft.Practices.Unity;
+using Unity;
 using PrismMahAppsSample.Infrastructure.Base;
 using PrismMahAppsSample.Infrastructure.Constants;
 using PrismMahAppsSample.Infrastructure.Events;

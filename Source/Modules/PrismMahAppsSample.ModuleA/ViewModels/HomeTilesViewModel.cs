@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Microsoft.Practices.Unity;
+using Unity;
 using PrismMahAppsSample.Infrastructure.Constants;
 using PrismMahAppsSample.Infrastructure.Interfaces;
 
@@ -14,10 +14,13 @@ namespace PrismMahAppsSample.ModuleA.ViewModels
 {
     public class HomeTilesViewModel : ViewModelBase
     {
-        public HomeTilesViewModel()
+        private readonly IMetroMessageDisplayService metroMessageDisplayService;
+
+        public HomeTilesViewModel(IMetroMessageDisplayService metroMessageDisplayService)
         {
             // Initialize commands
             this.IntializeCommands();
+            this.metroMessageDisplayService = metroMessageDisplayService;
         }
 
         #region Commands
@@ -61,7 +64,7 @@ namespace PrismMahAppsSample.ModuleA.ViewModels
         /// </summary>
         public void ShowModuleAMessage()
         {
-            this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Module A Message", "This is a message from Module A");
+            metroMessageDisplayService.ShowMessageAsnyc("Module A Message", "This is a message from Module A");
         }
 
         #endregion Commands

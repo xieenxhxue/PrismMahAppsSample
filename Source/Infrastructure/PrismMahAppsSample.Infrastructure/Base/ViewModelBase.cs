@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Unity;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -9,9 +9,9 @@ namespace PrismMahAppsSample.Infrastructure.Base
     {
         public ViewModelBase()
         {
-            this.Container = Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<IUnityContainer>();
-            this.RegionManager = Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<IRegionManager>();
-            this.EventAggregator = Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<IEventAggregator>();
+            this.Container = CommonServiceLocator.ServiceLocator.Current.GetInstance<IUnityContainer>();
+            this.RegionManager = CommonServiceLocator.ServiceLocator.Current.GetInstance<IRegionManager>();
+            this.EventAggregator = CommonServiceLocator.ServiceLocator.Current.GetInstance<IEventAggregator>();
         }
 
         #region Properties

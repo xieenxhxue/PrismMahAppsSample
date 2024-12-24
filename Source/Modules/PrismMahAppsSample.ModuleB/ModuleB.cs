@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Unity;
 using Prism.Regions;
 using PrismMahAppsSample.Infrastructure.Base;
 using PrismMahAppsSample.Infrastructure.Constants;
