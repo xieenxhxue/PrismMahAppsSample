@@ -7,16 +7,23 @@ using PrismMahAppsSample.Infrastructure.Constants;
 using PrismMahAppsSample.Infrastructure.Events;
 using PrismMahAppsSample.Infrastructure.Interfaces;
 using PrismMahAppsSample.Shell.Views;
+using Prism.Commands;
+using System.Windows.Input;
 
 namespace PrismMahAppsSample.Shell.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public ICommand DeployCupCakesCommand { get; private set; }
+        public ICommand LaunchGitHubSiteCommand { get; private set; }
+        
         /// <summary>
         /// CTOR
         /// </summary>
         public MainWindowViewModel()
         {
+            this.DeployCupCakesCommand = new DelegateCommand(this.OnDeployCupCakes);
+            this.LaunchGitHubSiteCommand = new DelegateCommand(this.OnLaunchGitHubSite);
             // Register to events
             EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Subscribe(OnStatusBarMessageUpdateEvent);
 
@@ -32,6 +39,14 @@ namespace PrismMahAppsSample.Shell.ViewModels
         }
 
         #region Event-Handler
+        private void OnDeployCupCakes()
+        {
+            this.StatusBarMessage = "OnDeployCupCakes";
+        }
+        private void OnLaunchGitHubSite()
+        {
+            this.StatusBarMessage = "OnLaunchGitHubSite";
+        }
 
         /// <summary>
         /// EventHandler for the update status bar event

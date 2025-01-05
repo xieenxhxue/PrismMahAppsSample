@@ -3,6 +3,7 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:prism="http://prismlibrary.com/"
                    xmlns:lex="https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension"
@@ -10,80 +11,97 @@
                    xmlns:infConstants="clr-namespace:PrismMahAppsSample.Infrastructure.Constants;assembly=PrismMahAppsSample.Infrastructure"
                    xmlns:infBehaviors="clr-namespace:PrismMahAppsSample.Infrastructure.Behaviors;assembly=PrismMahAppsSample.Infrastructure"
                    infBehaviors:RegionPopupBehaviors.CreatePopupRegionWithName="{x:Static infConstants:RegionNames.DialogPopupRegion}"
-                   infBehaviors:RegionPopupBehaviors.ContainerWindowStyle="{StaticResource PopupRegionWindowStyle}"
                    lex:LocalizeDictionary.DesignCulture="de-DE"        
                    lex:ResxLocalizationProvider.DefaultAssembly="PrismMahAppsSample.Shell"
                    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
                    prism:ViewModelLocator.AutoWireViewModel="True"
-                   ResizeMode="CanResizeWithGrip"
-                   GlowBrush="{DynamicResource AccentColorBrush}"
                    mc:Ignorable="d"
                    Title="MainWindow" Height="600" Width="800">
 
-    <!-- LeftWindow Commands -->
-    <mah:MetroWindow.LeftWindowCommands>
+    <!--<mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands x:Name="leftWindowCommandsRegion" />
     </mah:MetroWindow.LeftWindowCommands>
-
-    <!-- RightWindow Commands -->
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands x:Name="rightWindowCommandsRegion" />
     </mah:MetroWindow.RightWindowCommands>
-
-    <!-- Flyouts -->
     <mah:MetroWindow.Flyouts>
         <mah:FlyoutsControl x:Name="flyoutsControlRegion" />
-    </mah:MetroWindow.Flyouts>
+    </mah:MetroWindow.Flyouts>-->
 
-    <mah:MetroContentControl>
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button Command="{Binding LaunchGitHubSiteCommand}" ToolTip="Open up the GitHub site">
+                <iconPacks:PackIconModern Width="22"
+                                  Height="22"
+                                  Kind="SocialGithubOctocat" />
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
 
-        <Grid>
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Command="{Binding DeployCupCakesCommand}" Content="Deploy CupCakes">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconModern Width="22"
+                                        Height="22"
+                                        VerticalAlignment="Center"
+                                        Kind="FoodCupcake" />
+                            <TextBlock Margin="4 0 0 0"
+                         VerticalAlignment="Center"
+                         Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+    <Grid>
 
-            <!-- Header -->
-            <StackPanel Margin="0,10,0,0" Grid.Row="0">
-                <StackPanel Margin="5,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="32"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Margin="0,10,0,0" Grid.Row="0">
+            <StackPanel Margin="5,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <!--<Rectangle Width="32"
                                    Height="32"
                                    Fill="{Binding Source={StaticResource AccentColorBrush}, UpdateSourceTrigger=PropertyChanged}">
                             <Rectangle.OpacityMask>
                                 <VisualBrush Stretch="Fill"
                                              Visual="{StaticResource appbar_home_empty}" />
                             </Rectangle.OpacityMask>
-                        </Rectangle>
-                        <Label Margin="4 0 0 0"
+                        </Rectangle>-->
+                    <Label Margin="4 0 0 0"
                                Style="{DynamicResource Header1}"
                                VerticalAlignment="Center"
                                Content="Home" />
-                    </StackPanel>
-
                 </StackPanel>
 
-                <Rectangle Margin="2,3,2,3" 
+            </StackPanel>
+
+            <Rectangle Margin="2,3,2,3" 
                            HorizontalAlignment="Stretch" 
                            Fill="{DynamicResource AccentColorBrush}" 
                            Height="4"/>
-            </StackPanel>
+        </StackPanel>
 
-            <!-- Main-Region -->
-            <ItemsControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static infConstants:RegionNames.MainRegion}"/>
+        <!-- Main-Region -->
+        <ItemsControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static infConstants:RegionNames.MainRegion}"/>
 
-            <!-- StatusBar -->
-            <StatusBar Grid.Row="2">
-                <StatusBarItem>PrismMahAppsSample DEMO Application</StatusBarItem>
-                <Separator Style="{StaticResource MetroStatusBarSeparator}" />
-                <StatusBarItem Content="{lex:Loc ShellStatusBarMessage}" />
-                <StatusBarItem Content="{Binding Path=StatusBarMessage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
-            </StatusBar>
+        <!-- StatusBar -->
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>PrismMahAppsSample DEMO Application</StatusBarItem>
+            <Separator  />
+            <StatusBarItem Content="{lex:Loc ShellStatusBarMessage}" />
+            <StatusBarItem Content="{Binding Path=StatusBarMessage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
+        </StatusBar>
 
-        </Grid>
-
-    </mah:MetroContentControl>
-
+    </Grid>
 </mah:MetroWindow>

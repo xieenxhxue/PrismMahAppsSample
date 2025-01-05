@@ -30,17 +30,17 @@ namespace PrismMahAppsSample.Shell.ViewModels
             this.localizerService = Container.Resolve<ILocalizerService>(ServiceNames.LocalizerService);
 
             // create metro theme color menu items for the demo
-            this.ApplicationThemes = ThemeManager.AppThemes
-                                           .Select(a => new ApplicationTheme() { Name = a.Name, BorderColorBrush = a.Resources["BlackColorBrush"] as Brush, ColorBrush = a.Resources["WhiteColorBrush"] as Brush })
-                                           .ToList();
+            //this.ApplicationThemes = ThemeManager.AppThemes
+            //                               .Select(a => new ApplicationTheme() { Name = a.Name, BorderColorBrush = a.Resources["BlackColorBrush"] as Brush, ColorBrush = a.Resources["WhiteColorBrush"] as Brush })
+            //                               .ToList();
 
-            // create accent colors list
-            this.AccentColors = ThemeManager.Accents
-                                            .Select(a => new AccentColor() { Name = a.Name, ColorBrush = a.Resources["AccentColorBrush"] as Brush })
-                                            .ToList();
+            //// create accent colors list
+            //this.AccentColors = ThemeManager.Accents
+            //                                .Select(a => new AccentColor() { Name = a.Name, ColorBrush = a.Resources["AccentColorBrush"] as Brush })
+            //                                .ToList();
 
-            this.SelectedTheme = this.ApplicationThemes.FirstOrDefault();
-            this.SelectedAccentColor = this.AccentColors.Where(c => c.Name.Equals("Cyan")).FirstOrDefault();
+            //this.SelectedTheme = this.ApplicationThemes.FirstOrDefault();
+            //this.SelectedAccentColor = this.AccentColors.Where(c => c.Name.Equals("Cyan")).FirstOrDefault();
         }
 
         #endregion CTOR
@@ -81,11 +81,11 @@ namespace PrismMahAppsSample.Shell.ViewModels
             {
                 if (this.SetProperty<ApplicationTheme>(ref this.selectedTheme, value))
                 {
-                    var theme = ThemeManager.DetectAppStyle(Application.Current);
-                    var appTheme = ThemeManager.GetAppTheme(value.Name);
-                    ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, appTheme);
+                    //var theme = ThemeManager.DetectAppStyle(Application.Current);
+                    //var appTheme = ThemeManager.GetAppTheme(value.Name);
+                    //ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, appTheme);
 
-                    EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(String.Format("Theme changed to {0}", value.Name));
+                    //EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(String.Format("Theme changed to {0}", value.Name));
                 }
             }
         }
@@ -102,11 +102,11 @@ namespace PrismMahAppsSample.Shell.ViewModels
             {
                 if (this.SetProperty<AccentColor>(ref this.selectedAccentColor, value))
                 {
-                    var theme = ThemeManager.DetectAppStyle(Application.Current);
-                    var accent = ThemeManager.GetAccent(value.Name);
-                    ThemeManager.ChangeAppStyle(Application.Current, accent, theme.Item1);
+                    //var theme = ThemeManager.DetectAppStyle(Application.Current);
+                    //var accent = ThemeManager.GetAccent(value.Name);
+                    //ThemeManager.ChangeAppStyle(Application.Current, accent, theme.Item1);
 
-                    EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(String.Format("Accent color changed to {0}", value.Name));
+                    //EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(String.Format("Accent color changed to {0}", value.Name));
                 }
             }
         }

@@ -67,8 +67,8 @@ Initialize
 ```
 to Implemented
 ``` 
-RegisterTypes(IContainerRegistry containerRegistry)；
-OnInitialized(IContainerProvider containerProvider)；
+RegisterTypes(IContainerRegistry containerRegistry);
+OnInitialized(IContainerProvider containerProvider);
 ```
 
 remove 
@@ -131,7 +131,7 @@ to
 
 
 ``` App.xaml
-< Application x:Class="PrismMahAppsSample.App"
+<Application x:Class="PrismMahAppsSample.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
@@ -149,6 +149,53 @@ to
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+                <!-- ModernUI-Icons -->
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+```
+
+Add NuGet-Packages
+
+- ControlzEx 4.4.0
+- Microsoft.Xaml.Behaviors.Wpf.1.1.19
+- MahApps.Metro.IconPacks.Modern 5.1.0
+- Unity.Abstractions 5.11.1
+- Unity.Container 5.11.1
+
+Update NuGet-Packages
+- MahApps.Metro 2.4.10
+- CommonServiceLocator 2.0.7
+- Unity.Abstractions 5.11.10
+- Unity.Container 5.11.11
+
+remove NuGet-Packages
+- MahApps.Metro.Resources 0.6.1
+
+
+``` App.xaml
+<Application x:Class="PrismMahAppsSample.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:local="clr-namespace:PrismMahAppsSample">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- Custom-Styles -->
+                <ResourceDictionary Source="/PrismMahAppsSample.Styling;component/LookAndFeel.xaml"/>
+
+                <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <!-- Theme setting -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
 
                 <!-- ModernUI-Icons -->
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
