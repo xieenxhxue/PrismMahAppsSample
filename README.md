@@ -11,8 +11,9 @@ forked from [steve600/PrismMahAppsSample] (https://github.com/steve600/PrismMahA
 ```
 
 ## Update
-Update Ϊ.NET Framework 4.8
+Update .NET Framework 4.8
 ### branch prism6
+git branch prism6
 Update NuGet-Packages
 - Prism 6.3.0
 - Unity 4.0.1
@@ -35,6 +36,7 @@ xmlns:lex="https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension"
 ```
 
 ### branch prism7
+git branch prism7
 Add NuGet-Packages
 - System.ValueTuple 4.5.0
 - System.Threading.Tasks.Extensions 4.5.2
