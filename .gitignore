@@ -62,6 +62,8 @@ dlldata.c
 
 # Chutzpah Test files
 _Chutzpah*
+# Visual Studio 2022
+.vs
 
 # Visual C++ cache files
 ipch/
