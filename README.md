@@ -163,7 +163,7 @@ to
 Add NuGet-Packages
 
 - ControlzEx 4.4.0
-- Microsoft.Xaml.Behaviors.Wpf.1.1.19
+- Microsoft.Xaml.Behaviors.Wpf.1.1.135
 - MahApps.Metro.IconPacks.Modern 5.1.0
 - Unity.Abstractions 5.11.1
 - Unity.Container 5.11.1
